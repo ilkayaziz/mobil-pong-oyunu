@@ -10,17 +10,18 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Build with Buildozer
-      uses: kivy/buildozer-action@v0.2.2
+      uses: ArtemSBulgakov/buildozer-action@v1
       with:
+        command: android debug
         filename: gelismisOyun.py
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: paketlenen-apk
         path: bin/*.apk
